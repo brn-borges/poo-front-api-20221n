@@ -16,4 +16,10 @@ async function cadastrar(){
         body: JSON.stringify(dado),
         headers: {"Content-Type": "application/json; charset=UTF-8"}
     })
+    .then(resposta => {
+        alert('Cadastro foi realizado com sucesso')
+    })
+    .catch( error => {
+        alert(error)
+    })
 }
