@@ -23,3 +23,22 @@ async function cadastrar(){
         alert(error)
     })
 }
+
+async function consultar(){
+    //consome a API e recupera os pokemons
+    let dados = await fetch('http://localhost:8080/pokemon')
+    .then(response => {
+        return response.json() // atribui os dados em json para dados
+    })
+    .catch(error => {
+        alert(error)
+    })
+    // percorrer a variavel dados
+    // vamos criar uma variavel result para concatenar resposta
+    let resposta = ''
+    dados.map(dado => { 
+        resposta += "<tr> <td>" + dado.nome + "</td> <td>" + dado.tipo + "</td> <td>" + dado.poder + "</td> <td>" + dado.nota + "</td> </tr>"
+    })
+    //colocar a resposta no body da tabela
+    document.getElementById("conteudoTabela").innerHTML = resposta
+}
